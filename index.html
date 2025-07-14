@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard RSC-TAE - Reconhecimento de Saberes e Competências</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Dashboard RSC-TAE</h1>
+            <p>Reconhecimento de Saberes e Competências - Técnico-Administrativos em Educação</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="calculadora">
+                <i class="fas fa-calculator"></i> Calculadora
+            </button>
+            <button class="tab-button" data-tab="resultados">
+                <i class="fas fa-chart-bar"></i> Resultados
+            </button>
+            <button class="tab-button" data-tab="analise">
+                <i class="fas fa-chart-line"></i> Análise
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <main class="content">
+            <!-- Calculadora Tab -->
+            <div id="calculadora" class="tab-content active">
+                <!-- Identificação -->
+                <section class="card">
+                    <div class="card-header">
+                        <i class="fas fa-id-card"></i>
+                        <h2>Identificação</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Informe seu nome para identificação no demonstrativo</p>
+                        <div class="form-group">
+                            <label for="nomeCompleto">Nome completo:</label>
+                            <input type="text" id="nomeCompleto" placeholder="Digite seu nome completo">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Nível Desejado -->
+                <section class="card">
+                    <div class="card-header">
+                        <i class="fas fa-target"></i>
+                        <h2>Nível Desejado</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Escolha o nível RSC-TAE que você deseja alcançar</p>
+                        <div class="nivel-container">
+                            <div class="form-group">
+                                <label for="nivelSelect">Selecione o nível:</label>
+                                <select id="nivelSelect">
+                                    <option value="RSC-1">RSC-1</option>
+                                    <option value="RSC-2">RSC-2</option>
+                                    <option value="RSC-3">RSC-3</option>
+                                    <option value="RSC-4">RSC-4</option>
+                                    <option value="RSC-5">RSC-5</option>
+                                    <option value="RSC-6">RSC-6</option>
+                                </select>
+                            </div>
+                            <div class="requisitos-panel">
+                                <h3 id="requisitosTitle">Requisitos do RSC-1</h3>
+                                <div class="requisitos-content">
+                                    <p><strong>Escolaridade:</strong> <span id="escolaridadeText">Ensino Fundamental incompleto</span></p>
+                                    <p><strong>Pontos mínimos:</strong> <span id="pontosMinimos">10</span></p>
+                                    <p><strong>Itens mínimos:</strong> <span id="itensMinimos">2</span></p>
+                                </div>
+                            </div>
+                            <button id="imprimirBtn" class="btn-print">
+                                <i class="fas fa-print"></i> Imprimir Demonstrativo
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Saberes e Competências -->
+                <section class="card">
+                    <div class="card-header">
+                        <i class="fas fa-list-check"></i>
+                        <h2>Saberes e Competências</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Marque os itens que você possui comprovação e informe as quantidades</p>
+                        <div id="saberesContainer" class="saberes-container">
+                            <!-- Itens serão gerados dinamicamente -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Histórico de Cálculos -->
+                <section class="card">
+                    <div class="card-header">
+                        <i class="fas fa-history"></i>
+                        <h2>Histórico de Cálculos</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Acompanhe seu progresso em tempo real</p>
+                        
+                        <div class="historico-section">
+                            <h3>Status Atual</h3>
+                            <div class="status-grid">
+                                <div class="status-item">
+                                    <span class="label">Pontuação:</span>
+                                    <span id="pontuacaoAtual" class="value">0.00</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="label">Itens:</span>
+                                    <span id="itensAtual" class="value">0</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="label">RSC Alcançado:</span>
+                                    <span id="rscAlcancado" class="value">Nenhum</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="historico-section">
+                            <h3 id="progressoTitle">Progresso para RSC-1</h3>
+                            <div class="progress-container">
+                                <div class="progress-item">
+                                    <span class="progress-label">Pontos</span>
+                                    <div class="progress-bar">
+                                        <div id="progressoPontos" class="progress-fill"></div>
+                                    </div>
+                                    <span id="progressoPontosText" class="progress-text">0.0/10</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">Itens</span>
+                                    <div class="progress-bar">
+                                        <div id="progressoItens" class="progress-fill"></div>
+                                    </div>
+                                    <span id="progressoItensText" class="progress-text">0/2</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="historico-section">
+                            <h3>O que falta:</h3>
+                            <div class="falta-grid">
+                                <div class="falta-item">
+                                    <span class="label">Pontos:</span>
+                                    <span id="faltaPontos" class="value">+10.0</span>
+                                </div>
+                                <div class="falta-item">
+                                    <span class="label">Itens:</span>
+                                    <span id="faltaItens" class="value">+2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Resultados Tab -->
+            <div id="resultados" class="tab-content">
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Pontuação Total</h3>
+                        <div class="result-value" id="pontuacaoTotal">0.00</div>
+                        <div class="result-label">pontos acumulados</div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Itens Comprovados</h3>
+                        <div class="result-value" id="itensComprovados">0</div>
+                        <div class="result-label">de 89 itens</div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Nível Alcançado</h3>
+                        <div class="result-value" id="nivelAlcancado">Nenhum</div>
+                        <div class="result-label">nível RSC-TAE</div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Progresso</h3>
+                        <div class="result-value" id="progressoGeral">0.0%</div>
+                        <div class="result-label">itens preenchidos</div>
+                    </div>
+                </div>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Status por Nível RSC-TAE</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Verificação dos critérios mínimos para cada nível</p>
+                        <div id="statusNiveis" class="status-niveis">
+                            <!-- Status será gerado dinamicamente -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Distribuição de Pontos por Categoria</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Visualização da pontuação obtida por área de competência</p>
+                        <div class="chart-container">
+                            <canvas id="chartPizza"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Progresso por Nível RSC</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Comparação entre pontuação atual e requisitos mínimos</p>
+                        <div class="chart-container">
+                            <canvas id="chartBarras"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Análise Tab -->
+            <div id="analise" class="tab-content">
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Distribuição de Pontos por Categoria</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Visualização da pontuação obtida por área de competência</p>
+                        <div class="chart-container">
+                            <canvas id="chartPizzaAnalise"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Progresso por Nível RSC</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Comparação entre pontuação atual e requisitos mínimos</p>
+                        <div class="chart-container">
+                            <canvas id="chartBarrasAnalise"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
