@@ -45,6 +45,11 @@
                             <label for="nomeCompleto">Nome completo:</label>
                             <input type="text" id="nomeCompleto" placeholder="Digite seu nome completo">
                         </div>
+                        <div style="display: flex; justify-content: flex-end;">
+                         <button id="imprimirBtn" class="btn-print">
+                            <i class="fas fa-print"></i> Imprimir Demonstrativo
+                         </button>
+                        </div>
                     </div>
                 </section>
 
@@ -76,90 +81,98 @@
                                     <p><strong>Itens mínimos:</strong> <span id="itensMinimos">2</span></p>
                                 </div>
                             </div>
-                            <button id="imprimirBtn" class="btn-print">
-                                <i class="fas fa-print"></i> Imprimir Demonstrativo
-                            </button>
                         </div>
                     </div>
                 </section>
 
-                <!-- Saberes e Competências -->
-                <section class="card">
-                    <div class="card-header">
-                        <i class="fas fa-list-check"></i>
-                        <h2>Saberes e Competências</h2>
-                    </div>
-                    <div class="card-body">
-                        <p>Marque os itens que você possui comprovação e informe as quantidades</p>
-                        <div id="saberesContainer" class="saberes-container">
-                            <!-- Itens serão gerados dinamicamente -->
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Histórico de Cálculos -->
-                <section class="card">
-                    <div class="card-header">
-                        <i class="fas fa-history"></i>
-                        <h2>Histórico de Cálculos</h2>
-                    </div>
-                    <div class="card-body">
-                        <p>Acompanhe seu progresso em tempo real</p>
-                        
-                        <div class="historico-section">
-                            <h3>Status Atual</h3>
-                            <div class="status-grid">
-                                <div class="status-item">
-                                    <span class="label">Pontuação:</span>
-                                    <span id="pontuacaoAtual" class="value">0.00</span>
-                                </div>
-                                <div class="status-item">
-                                    <span class="label">Itens:</span>
-                                    <span id="itensAtual" class="value">0</span>
-                                </div>
-                                <div class="status-item">
-                                    <span class="label">RSC Alcançado:</span>
-                                    <span id="rscAlcancado" class="value">Nenhum</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="historico-section">
-                            <h3 id="progressoTitle">Progresso para RSC-1</h3>
-                            <div class="progress-container">
-                                <div class="progress-item">
-                                    <span class="progress-label">Pontos</span>
-                                    <div class="progress-bar">
-                                        <div id="progressoPontos" class="progress-fill"></div>
-                                    </div>
-                                    <span id="progressoPontosText" class="progress-text">0.0/10</span>
-                                </div>
-                                <div class="progress-item">
-                                    <span class="progress-label">Itens</span>
-                                    <div class="progress-bar">
-                                        <div id="progressoItens" class="progress-fill"></div>
-                                    </div>
-                                    <span id="progressoItensText" class="progress-text">0/2</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="historico-section">
-                            <h3>O que falta:</h3>
-                            <div class="falta-grid">
-                                <div class="falta-item">
-                                    <span class="label">Pontos:</span>
-                                    <span id="faltaPontos" class="value">+10.0</span>
-                                </div>
-                                <div class="falta-item">
-                                    <span class="label">Itens:</span>
-                                    <span id="faltaItens" class="value">+2</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+ <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    
+    <!-- Coluna: Saberes e Competências (mais larga) -->
+    <div style="flex: 2; min-width: 300px;">
+        <!-- Saberes e Competências -->
+        <section class="card">
+            <div class="card-header">
+                <i class="fas fa-list-check"></i>
+                <h2>Saberes e Competências</h2>
             </div>
+            <div class="card-body">
+                <p>Marque os itens que você possui comprovação e informe as quantidades</p>
+                <div id="saberesContainer" class="saberes-container">
+                    <!-- Itens serão gerados dinamicamente -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Coluna: Histórico de Cálculos (mais estreita) -->
+    <div style="flex: 1; min-width: 300px;">
+        <!-- Histórico de Cálculos -->
+        <section class="card">
+            <div class="card-header">
+                <i class="fas fa-history"></i>
+                <h2>Histórico de Cálculos</h2>
+            </div>
+            <div class="card-body">
+                <p>Acompanhe seu progresso em tempo real</p>
+
+                <div class="historico-section">
+                    <h3>Status Atual</h3>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="label">Pontuação:</span>
+                            <span id="pontuacaoAtual" class="value">0.00</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Itens:</span>
+                            <span id="itensAtual" class="value">0</span>
+                        </div>
+                        <div class="status-item" style="flex: 1; min-width: 200px;">
+                            <span class="label">RSC&nbsp;Alcançado:&nbsp;</span>
+                            <span id="rscAlcancado" class="value">Nenhum</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="historico-section">
+                    <h3 id="progressoTitle">Progresso para RSC-1</h3>
+                    <div class="progress-container">
+                        <div class="progress-item">
+                            <span class="progress-label">Pontos</span>
+                            <div class="progress-bar">
+                                <div id="progressoPontos" class="progress-fill"></div>
+                            </div>
+                            <span id="progressoPontosText" class="progress-text">0.0/10</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-label">Itens</span>
+                            <div class="progress-bar">
+                                <div id="progressoItens" class="progress-fill"></div>
+                            </div>
+                            <span id="progressoItensText" class="progress-text">0/2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="historico-section">
+                    <h3>O que falta:</h3>
+                    <div class="falta-grid">
+                        <div class="falta-item">
+                            <span class="label">Pontos:</span>
+                            <span id="faltaPontos" class="value">+10.0</span>
+                        </div>
+                        <div class="falta-item">
+                            <span class="label">Itens:</span>
+                            <span id="faltaItens" class="value">+2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+</div>
+
 
             <!-- Resultados Tab -->
             <div id="resultados" class="tab-content">
