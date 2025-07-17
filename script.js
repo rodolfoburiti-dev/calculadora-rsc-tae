@@ -1182,7 +1182,7 @@ function gerarDemonstrativo() {
             </div>
             
             <div class="footer">
-                <p>Demonstrativo gerado automaticamente pelo Dashboard RSC-TAE</p>
+                <p>Demonstrativo gerado automaticamente pela Calculadora RSC-TAE</p>
                 <p>Este documento é apenas informativo e não substitui a avaliação oficial</p>
             </div>
         </body>
