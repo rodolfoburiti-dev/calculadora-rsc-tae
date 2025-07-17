@@ -341,7 +341,7 @@ body {
 
 .progress-label {
     font-weight: 500;
-    color: #666;
+    color: gray;
 }
 
 .progress-bar {
@@ -364,6 +364,20 @@ body {
     color: #666;
     min-width: 60px;
     text-align: right;
+}
+
+.alcanceRSCpretendido {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    border: 2px solid #b1fab1;
+
+    padding: 10px; 
+    background: #e6ffe6; 
+    color: #207520; 
+    border-radius: 5px; 
+    font-weight: bold;"
 }
 
 .falta-grid {

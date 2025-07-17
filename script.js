@@ -854,6 +854,19 @@ function updateProgresso() {
     
     document.getElementById('faltaPontos').textContent = faltaPontos > 0 ? `+${faltaPontos.toFixed(1)}` : '✓';
     document.getElementById('faltaItens').textContent = faltaItens > 0 ? `+${faltaItens}` : '✓';
+
+    // Exibir mensagem de parabéns se ambos requisitos forem atendidos
+    const alcanceRSCpretendido = document.getElementById('alcanceRSCpretendido');
+    if (faltaPontos === 0 && faltaItens === 0) {
+        if (alcanceRSCpretendido) alcanceRSCpretendido.style.display = 'block';
+    } else {
+        if (alcanceRSCpretendido) alcanceRSCpretendido.style.display = 'none';
+    }
+
+    // Atualiza o texto sem alterar o style do elemento
+    if (alcanceRSCpretendido) {
+        alcanceRSCpretendido.textContent = `🎉 Parabéns! Você alcançou o nível ${nivel}.`;
+    }
 }
 
 // Atualizar resultados
