@@ -73,8 +73,10 @@ Dashboard para avaliação de Reconhecimento de Saberes e Competências (RSC-TAE
 - ✅ Mobile (iOS/Android)
 
 ## Suporte
-Este dashboard é uma ferramenta informativa e não substitui a avaliação oficial do RSC-TAE.
 
----
+Para dúvidas ou suporte, entre em contato através de:
+- Issues do GitHub
+- Email: [weburiti@gmail.com]
+
 **Dashboard RSC-TAE** - Versão HTML Client-Side  
 Desenvolvido para máxima compatibilidade e facilidade de uso.
